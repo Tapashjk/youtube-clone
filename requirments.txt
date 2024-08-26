@@ -1,1 +1,2 @@
 pip install Flask-WTF WTForms
+pip install Flask
