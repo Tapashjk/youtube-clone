@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Replica</title>
+
+
+<!-- ashotoshhh you can modify if you want  -->
+
+<style>
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #181818;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 70px;
+    background-color: #202020;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu-item {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.menu-item:hover, .menu-item.active {
+    background-color: #383838;
+}
+
+.menu-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.menu-label {
+    font-size: 10px;
+    margin-top: 5px;
+    color: #aaa;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #202020;
+}
+
+.logo {
+    height: 25px;
+}
+
+.np {
+    color: #999;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 600px;
+    margin: 0 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #333;
+    border-radius: 2px;
+    background-color: #121212;
+    color: #fff;
+}
+
+.search-button {
+    padding: 8px 16px;
+    background-color: #333;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.right-menu .profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #444;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.categories {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px 20px;
+    background-color: #202020;
+    white-space: nowrap;
+}
+
+.category {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.category.active {
+    background-color: #fff;
+    color: #000;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+.video-card {
+    background-color: #202020;
+    width: 300px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.video-card:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+}
+
+.video-info {
+    padding: 10px;
+}
+
+.video-title {
+    font-size: 16px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+}
+
+.video-details {
+    font-size: 12px;
+    color: #999;
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="menu-item active">
+                <img src="home-icon.png" alt="Home" class="menu-icon">
+                <span class="menu-label">Home</span>
+            </div>
+            <div class="menu-item">
+                <img src="shorts-icon.png" alt="Shorts" class="menu-icon">
+                <span class="menu-label">Shorts</span>
+            </div>
+            <div class="menu-item">
+                <img src="subscriptions-icon.png" alt="Subscriptions" class="menu-icon">
+                <span class="menu-label">Subscriptions</span>
+            </div>
+            <div class="menu-item">
+                <img src="library-icon.png" alt="Library" class="menu-icon">
+                <span class="menu-label">Library</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="navbar">
+                <div class="left-menu">
+                    <img src="youtube-logo.png" alt="YouTube Logo" class="logo">
+                    <span class="np">NP</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search" class="search-input">
+                    <button class="search-button">🔍</button>
+                </div>
+                <div class="right-menu">
+                    <button class="profile-icon">R</button>
+                </div>
+            </div>
+
+            <div class="categories">
+                <button class="category active">All</button>
+                <button class="category">Gaming</button>
+                <button class="category">Music</button>
+                <button class="category">ai</button>
+                <button class="category">ghimireee</button>
+               
+            </div>
+
+            <div class="content">
+                <div class="video-card">
+                    <img src="video1.jpg" alt="youtubee clone kasri garneee" class="thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">youtubee clone kasri garneee</h3>
+                        <p class="video-details">tangoboi · 51M views · 2 years ago</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="video2.jpg" alt="youtubee clone kasri garneee" class="thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">My Mix</h3>
+                        <p class="video-details">ghimireee</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="video3.jpg" alt="youtubee clone kasri garneee" class="thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">The World's CHEAPEST youtube</h3>
+                        <p class="video-details">ghimireee · 205K views · 4 days ago</p>
+                    </div>
+                </div>
+                <!-- asutosh plzee add more  -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
