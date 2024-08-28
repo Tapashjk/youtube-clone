@@ -188,6 +188,50 @@ body {
     color: #999;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
+}
+
+.youtube-logo {
+  display: flex;
+  align-items: center;
+}
+
+.youtube-icon {
+  width: 50px;
+  height: 35px;
+  background-color: #FF0000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  position: relative;
+}
+
+.play-button {
+  width: 0;
+  height: 0;
+  border-left: 12px solid white;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.youtube-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF0000;
+}
+.np{
+    font-size: 0.7em;
+    vertical-align: super;
+}
 </style>
 </head>
 <body>
@@ -214,7 +258,13 @@ body {
         <div class="main-content">
             <div class="navbar">
                 <div class="left-menu">
-                    <img src="youtube-logo.png" alt="YouTube Logo" class="logo">
+                    <body>
+                        <div class="youtube-logo">
+                            <div class="youtube-icon">
+                                <div class="play-button"></div>
+                            </div>
+                            <div class="youtube-text">YouTube</div>
+                        </div>
                     <span class="np">NP</span>
                 </div>
                 <div class="search-bar">
