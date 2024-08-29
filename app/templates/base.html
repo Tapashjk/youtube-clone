@@ -13,13 +13,23 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #181818;
-            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Dark and Light Mode Styles */
+        body.dark-mode {
+            background-color: #181818;
+            color: #fff;
+        }
+
+        body.light-mode {
+            background-color: #f1f1f1;
+            color: #000;
         }
 
         .container {
@@ -37,6 +47,10 @@
             align-items: center;
         }
 
+        body.light-mode .sidebar {
+            background-color: #fff;
+        }
+
         .menu-item {
             width: 100%;
             padding: 10px 0;
@@ -51,6 +65,10 @@
             background-color: #383838;
         }
 
+        body.light-mode .menu-item:hover, body.light-mode .menu-item.active {
+            background-color: #ddd;
+        }
+
         .menu-icon {
             width: 24px;
             height: 24px;
@@ -62,12 +80,16 @@
             color: #aaa;
         }
 
+        body.light-mode .menu-label {
+            color: #000;
+        }
+
         .main-content {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
-            background-color: #181818;
+            background-color: inherit;
         }
 
         .navbar {
@@ -79,116 +101,13 @@
             position: relative;
         }
 
-        .logo {
-            height: 25px;
-        }
-
-        .np {
-            color: #999;
-            font-size: 12px;
-            margin-left: 10px;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            max-width: 600px;
-            margin: 0 20px;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #333;
-            border-radius: 2px;
-            background-color: #121212;
-            color: #fff;
-        }
-
-        .search-button {
-            padding: 8px 16px;
-            background-color: #333;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        .right-menu .profile-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-color: #444;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .categories {
-            display: flex;
-            overflow-x: auto;
-            padding: 10px 20px;
-            background-color: #202020;
-            white-space: nowrap;
-        }
-
-        .category {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 8px 12px;
-            margin-right: 10px;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .category.active {
+        body.light-mode .navbar {
             background-color: #fff;
-            color: #000;
         }
 
-        .content {
+        .left-menu {
             display: flex;
-            flex-wrap: wrap;
-            padding: 20px;
-            justify-content: space-around;
-        }
-
-        .video-card {
-            background-color: #202020;
-            width: 300px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .video-card:hover {
-            transform: scale(1.05);
-        }
-
-        .thumbnail {
-            width: 100%;
-            height: auto;
-        }
-
-        .video-info {
-            padding: 10px;
-        }
-
-        .video-title {
-            font-size: 16px;
-            margin-bottom: 5px;
-            line-height: 1.4;
-        }
-
-        .video-details {
-            font-size: 12px;
-            color: #999;
+            align-items: center;
         }
 
         .youtube-logo {
@@ -219,15 +138,164 @@
         .youtube-text {
             font-size: 24px;
             font-weight: bold;
-            color: #FF0000;
+            color: #fff;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        body.light-mode .youtube-text {
+            color: #000;
         }
 
         .np {
-            font-size: 0.7em;
+            font-size: 0.5em;
+            color: #999;
+            margin-left: 4px;
             vertical-align: super;
+            position: absolute;
+            top: -4px;
+            right: -23px;
         }
 
-        /* Profile Dropdown ko part for css */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #333;
+            border-radius: 2px;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        body.light-mode .search-input {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+        }
+
+        .search-button {
+            padding: 8px 16px;
+            background-color: #333;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        body.light-mode .search-button {
+            background-color: #ccc;
+            color: #000;
+        }
+
+        .right-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #444;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        body.light-mode .profile-icon {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 20px;
+            background-color: #202020;
+            white-space: nowrap;
+        }
+
+        body.light-mode .categories {
+            background-color: #eee;
+        }
+
+        .category {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            margin-right: 10px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        body.light-mode .category {
+            background-color: #ddd;
+            color: #000;
+        }
+
+        .category.active {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: space-around;
+        }
+
+        .video-card {
+            background-color: #202020;
+            width: 300px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        body.light-mode .video-card {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .video-card:hover {
+            transform: scale(1.05);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-info {
+            padding: 10px;
+        }
+
+        .video-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .video-details {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Profile Dropdown */
         .profile-dropdown {
             position: absolute;
             top: 60px;
@@ -241,11 +309,20 @@
             color: #fff;
         }
 
+        body.light-mode .profile-dropdown {
+            background-color: #fff;
+            color: #000;
+        }
+
         .profile-header {
             display: flex;
             padding: 15px;
             align-items: center;
             border-bottom: 1px solid #333;
+        }
+
+        body.light-mode .profile-header {
+            border-bottom: 1px solid #ccc;
         }
 
         .profile-icon-large {
@@ -258,6 +335,11 @@
             justify-content: center;
             font-size: 24px;
             margin-right: 10px;
+        }
+
+        body.light-mode .profile-icon-large {
+            background-color: #ddd;
+            color: #000;
         }
 
         .profile-details {
@@ -284,8 +366,16 @@
             transition: background-color 0.3s;
         }
 
+        body.light-mode .profile-menu a {
+            color: #000;
+        }
+
         .profile-menu a:hover {
             background-color: #383838;
+        }
+
+        body.light-mode .profile-menu a:hover {
+            background-color: #ddd;
         }
 
         .profile-menu hr {
@@ -293,9 +383,66 @@
             border-top: 1px solid #333;
             margin: 5px 0;
         }
+
+        body.light-mode .profile-menu hr {
+            border-top: 1px solid #ccc;
+        }
+
+        /* Dark/Light Mode Toggle */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 14px;
+            width: 14px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #0073e6;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(14px);
+        }
     </style>
 </head>
-<body>
+<body class="dark-mode">
     <div class="container">
         <div class="sidebar">
             <div class="menu-item active">
@@ -323,9 +470,8 @@
                         <div class="youtube-icon">
                             <div class="play-button"></div>
                         </div>
-                        <div class="youtube-text">YouTube</div>
+                        <div class="youtube-text">YouTube<span class="np">NP</span></div>
                     </div>
-                    <span class="np">NP</span>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Search" class="search-input">
@@ -351,12 +497,19 @@
                             <a href="#">Purchases and memberships</a>
                             <a href="#">Your data in YouTube</a>
                             <hr>
-                            <a href="#">Appearance: Device theme</a>
+                            <div class="toggle-container">
+                                <label for="themeToggle">Dark Mode</label>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="themeToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                            </div>
                             <a href="#">Language: English</a>
                             <a href="#">Restricted Mode: Off</a>
                             <a href="#">Location: Nepal</a>
                             <a href="#">Keyboard shortcuts</a>
                             <a href="#">Settings</a>
+                            <a href="login.html">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -392,21 +545,55 @@
                         <p class="video-details">ghimireee · 205K views · 4 days ago</p>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
-    <!-- yo script chai profile drop down ko lagi -->
+    <!-- Script for theme toggle and profile dropdown -->
     <script>
         document.querySelector('.profile-icon').addEventListener('click', function() {
             const dropdown = document.querySelector('.profile-dropdown');
             dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
         });
 
-      
         window.addEventListener('click', function(e) {
             if (!document.querySelector('.navbar').contains(e.target)) {
                 document.querySelector('.profile-dropdown').style.display = 'none';
+            }
+        });
+
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            }
+        });
+
+        // Maintain the mode even after page reload
+        document.addEventListener('DOMContentLoaded', () => {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            themeToggle.checked = isDarkMode;
+            if (isDarkMode) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.add('light-mode');
+            }
+        });
+
+        themeToggle.addEventListener('change', () => {
+            const isDarkMode = themeToggle.checked;
+            localStorage.setItem('darkMode', isDarkMode);
+            if (isDarkMode) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
             }
         });
     </script>

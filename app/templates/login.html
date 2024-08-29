@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Login</title>
-    <link rel="stylesheet" href="static/css/styles.css"></link>
-
+    <link rel="stylesheet" href="static/css/styles.css">
 </head>
-<body>
+<body class="light-mode">
+    <div class="toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">Dark Mode</span>
+    </div>
     <div class="login-container">
         <div class="login-box">
             <div class="logo">
@@ -34,5 +40,19 @@
         </div>
     </div>
     <script src="static/js/scripts.js"></script>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+            }
+        });
+    </script>
 </body>
 </html>
