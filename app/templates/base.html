@@ -4,235 +4,228 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Replica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181818;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-<!-- ashotoshhh you can modify if you want  -->
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
 
-<style>
-    
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        .sidebar {
+            width: 70px;
+            background-color: #202020;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #181818;
-    color: #fff;
-}
+        .menu-item {
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
-.container {
-    display: flex;
-    height: 100vh;
-}
+        .menu-item:hover, .menu-item.active {
+            background-color: #383838;
+        }
 
-.sidebar {
-    width: 70px;
-    background-color: #202020;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+        }
 
-.menu-item {
-    width: 100%;
-    padding: 10px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
+        .menu-label {
+            font-size: 10px;
+            margin-top: 5px;
+            color: #aaa;
+        }
 
-.menu-item:hover, .menu-item.active {
-    background-color: #383838;
-}
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            background-color: #181818;
+        }
 
-.menu-icon {
-    width: 24px;
-    height: 24px;
-}
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #202020;
+        }
 
-.menu-label {
-    font-size: 10px;
-    margin-top: 5px;
-    color: #aaa;
-}
+        .logo {
+            height: 25px;
+        }
 
-.main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-}
+        .np {
+            color: #999;
+            font-size: 12px;
+            margin-left: 10px;
+        }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #202020;
-}
+        .search-bar {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
 
-.logo {
-    height: 25px;
-}
+        .search-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #333;
+            border-radius: 2px;
+            background-color: #121212;
+            color: #fff;
+        }
 
-.np {
-    color: #999;
-    font-size: 12px;
-    margin-left: 10px;
-}
+        .search-button {
+            padding: 8px 16px;
+            background-color: #333;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
 
-.search-bar {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 600px;
-    margin: 0 20px;
-}
+        .right-menu .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #444;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
 
-.search-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #333;
-    border-radius: 2px;
-    background-color: #121212;
-    color: #fff;
-}
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 20px;
+            background-color: #202020;
+            white-space: nowrap;
+        }
 
-.search-button {
-    padding: 8px 16px;
-    background-color: #333;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-}
+        .category {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            margin-right: 10px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+        }
 
-.right-menu .profile-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #444;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
+        .category.active {
+            background-color: #fff;
+            color: #000;
+        }
 
-.categories {
-    display: flex;
-    overflow-x: auto;
-    padding: 10px 20px;
-    background-color: #202020;
-    white-space: nowrap;
-}
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: space-around;
+        }
 
-.category {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    margin-right: 10px;
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 14px;
-}
+        .video-card {
+            background-color: #202020;
+            width: 300px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
 
-.category.active {
-    background-color: #fff;
-    color: #000;
-}
+        .video-card:hover {
+            transform: scale(1.05);
+        }
 
-.content {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    justify-content: space-around;
-}
+        .thumbnail {
+            width: 100%;
+            height: auto;
+        }
 
-.video-card {
-    background-color: #202020;
-    width: 300px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-}
+        .video-info {
+            padding: 10px;
+        }
 
-.video-card:hover {
-    transform: scale(1.05);
-}
+        .video-title {
+            font-size: 16px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
 
-.thumbnail {
-    width: 100%;
-    height: auto;
-}
+        .video-details {
+            font-size: 12px;
+            color: #999;
+        }
 
-.video-info {
-    padding: 10px;
-}
+        .youtube-logo {
+            display: flex;
+            align-items: center;
+        }
 
-.video-title {
-    font-size: 16px;
-    margin-bottom: 5px;
-    line-height: 1.4;
-}
+        .youtube-icon {
+            width: 50px;
+            height: 35px;
+            background-color: #FF0000;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            position: relative;
+        }
 
-.video-details {
-    font-size: 12px;
-    color: #999;
-}
+        .play-button {
+            width: 0;
+            height: 0;
+            border-left: 12px solid white;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f9f9f9;
-  font-family: Arial, sans-serif;
-}
+        .youtube-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF0000;
+        }
 
-.youtube-logo {
-  display: flex;
-  align-items: center;
-}
-
-.youtube-icon {
-  width: 50px;
-  height: 35px;
-  background-color: #FF0000;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  position: relative;
-}
-
-.play-button {
-  width: 0;
-  height: 0;
-  border-left: 12px solid white;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
-
-.youtube-text {
-  font-size: 24px;
-  font-weight: bold;
-  color: #FF0000;
-}
-.np{
-    font-size: 0.7em;
-    vertical-align: super;
-}
-</style>
+        .np {
+            font-size: 0.7em;
+            vertical-align: super;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -258,13 +251,12 @@ body {
         <div class="main-content">
             <div class="navbar">
                 <div class="left-menu">
-                    <body>
-                        <div class="youtube-logo">
-                            <div class="youtube-icon">
-                                <div class="play-button"></div>
-                            </div>
-                            <div class="youtube-text">YouTube</div>
+                    <div class="youtube-logo">
+                        <div class="youtube-icon">
+                            <div class="play-button"></div>
                         </div>
+                        <div class="youtube-text">YouTube</div>
+                    </div>
                     <span class="np">NP</span>
                 </div>
                 <div class="search-bar">
@@ -280,34 +272,33 @@ body {
                 <button class="category active">All</button>
                 <button class="category">Gaming</button>
                 <button class="category">Music</button>
-                <button class="category">ai</button>
-                <button class="category">ghimireee</button>
-               
+                <button class="category">AI</button>
+                <button class="category">Ghimireee</button>
             </div>
 
             <div class="content">
                 <div class="video-card">
-                    <img src="video1.jpg" alt="youtubee clone kasri garneee" class="thumbnail">
+                    <img src="video1.jpg" alt="Video 1" class="thumbnail">
                     <div class="video-info">
-                        <h3 class="video-title">youtubee clone kasri garneee</h3>
+                        <h3 class="video-title">Video 1</h3>
                         <p class="video-details">tangoboi · 51M views · 2 years ago</p>
                     </div>
                 </div>
                 <div class="video-card">
-                    <img src="video2.jpg" alt="youtubee clone kasri garneee" class="thumbnail">
+                    <img src="video2.jpg" alt="Video 2" class="thumbnail">
                     <div class="video-info">
                         <h3 class="video-title">My Mix</h3>
                         <p class="video-details">ghimireee</p>
                     </div>
                 </div>
                 <div class="video-card">
-                    <img src="video3.jpg" alt="youtubee clone kasri garneee" class="thumbnail">
+                    <img src="video3.jpg" alt="Video 3" class="thumbnail">
                     <div class="video-info">
                         <h3 class="video-title">The World's CHEAPEST youtube</h3>
                         <p class="video-details">ghimireee · 205K views · 4 days ago</p>
                     </div>
                 </div>
-                <!-- asutosh plzee add more  -->
+                <!-- Add more video cards as needed -->
             </div>
         </div>
     </div>
