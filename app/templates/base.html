@@ -548,7 +548,7 @@
             </div>
         </div>
     </div>
-    <!-- Script for theme toggle and profile dropdown -->
+    <!-- Script for theme toggle and profile dropdown ko lagi -->
     <script>
         document.querySelector('.profile-icon').addEventListener('click', function() {
             const dropdown = document.querySelector('.profile-dropdown');
@@ -574,7 +574,7 @@
             }
         });
 
-        // Maintain the mode even after page reload
+        
         document.addEventListener('DOMContentLoaded', () => {
             const isDarkMode = localStorage.getItem('darkMode') === 'true';
             themeToggle.checked = isDarkMode;
