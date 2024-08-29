@@ -76,6 +76,7 @@
             align-items: center;
             padding: 10px 20px;
             background-color: #202020;
+            position: relative;
         }
 
         .logo {
@@ -225,6 +226,73 @@
             font-size: 0.7em;
             vertical-align: super;
         }
+
+        /* Profile Dropdown */
+        .profile-dropdown {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #202020;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            width: 250px;
+            z-index: 1000;
+            color: #fff;
+        }
+
+        .profile-header {
+            display: flex;
+            padding: 15px;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .profile-icon-large {
+            width: 50px;
+            height: 50px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .profile-details {
+            flex-grow: 1;
+        }
+
+        .profile-details a {
+            color: #0c84ff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .profile-menu {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+        }
+
+        .profile-menu a {
+            padding: 10px 20px;
+            color: #ddd;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .profile-menu a:hover {
+            background-color: #383838;
+        }
+
+        .profile-menu hr {
+            border: 0;
+            border-top: 1px solid #333;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -265,6 +333,32 @@
                 </div>
                 <div class="right-menu">
                     <button class="profile-icon">R</button>
+                    <div class="profile-dropdown">
+                        <div class="profile-header">
+                            <div class="profile-icon-large">R</div>
+                            <div class="profile-details">
+                                <strong>Rebalon</strong>
+                                <p>@Rebalon</p>
+                                <a href="#">View your channel</a>
+                            </div>
+                        </div>
+                        <div class="profile-menu">
+                            <a href="#">Google Account</a>
+                            <a href="#">Switch account</a>
+                            <a href="#">Sign out</a>
+                            <hr>
+                            <a href="#">YouTube Studio</a>
+                            <a href="#">Purchases and memberships</a>
+                            <a href="#">Your data in YouTube</a>
+                            <hr>
+                            <a href="#">Appearance: Device theme</a>
+                            <a href="#">Language: English</a>
+                            <a href="#">Restricted Mode: Off</a>
+                            <a href="#">Location: Nepal</a>
+                            <a href="#">Keyboard shortcuts</a>
+                            <a href="#">Settings</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -302,5 +396,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelector('.profile-icon').addEventListener('click', function() {
+            const dropdown = document.querySelector('.profile-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Close the dropdown if clicked outside
+        window.addEventListener('click', function(e) {
+            if (!document.querySelector('.navbar').contains(e.target)) {
+                document.querySelector('.profile-dropdown').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
