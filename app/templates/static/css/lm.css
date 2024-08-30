@@ -18,6 +18,16 @@ header {
     background-color: #fff;
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header .logo img {
@@ -25,18 +35,24 @@ header .logo img {
 }
 
 nav {
-    float: right;
+    display: flex;
+    align-items: center;
 }
 
 nav a {
     color: #333;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 15px;
     font-size: 1em;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    color: #FF0000;
+}
+
+nav .cta-button {
+    margin-left: 20px;
 }
 
 /* Hero Section */
@@ -147,18 +163,27 @@ footer p {
         width: 100px;
     }
 
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 10px 0;
+    }
+
+    nav .cta-button {
+        margin-top: 20px;
+        align-self: center;
+    }
+
     .hero h1 {
         font-size: 2.5em;
     }
 
     .hero p {
         font-size: 1.2em;
-    }
-
-    nav {
-        float: none;
-        text-align: center;
-        margin-top: 10px;
     }
 
     .section h2 {
