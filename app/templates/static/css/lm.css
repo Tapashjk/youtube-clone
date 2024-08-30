@@ -1,89 +1,60 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f1f1f1;
+    background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
 }
 
-header {
-    background-color: #FF0000;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+header .logo img {
+    width: 120px;
 }
 
 nav {
-    background-color: #333;
-    padding: 10px 20px;
+    float: right;
 }
 
 nav a {
-    color: #fff;
+    color: #333;
     text-decoration: none;
     margin: 0 10px;
+    font-size: 1em;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
 
-.container {
-    max-width: 1100px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section {
-    margin-bottom: 40px;
-}
-
-.section h2 {
-    font-size: 2em;
-    color: #FF0000;
-    margin-bottom: 10px;
-}
-
-.section p {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-}
-
-.section ul {
-    list-style-type: disc;
-    margin: 20px 0 20px 20px;
-}
-
-.section ul li {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-.section img {
-    max-width: 100%;
-    border-radius: 8px;
-}
-
-footer {
-    background-color: #333;
+/* Hero Section */
+.hero {
+    background: url('https://www.example.com/youtube-hero.jpg') no-repeat center center/cover;
     color: #fff;
+    padding: 100px 0;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
 }
 
-footer p {
-    margin: 0;
-    font-size: 1em;
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
 }
 
 .cta-button {
@@ -99,4 +70,98 @@ footer p {
 
 .cta-button:hover {
     background-color: #cc0000;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-size: 2.5em;
+    color: #FF0000;
+    margin-bottom: 20px;
+}
+
+.section p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.section img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature h3 {
+    color: #FF0000;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.feature p {
+    font-size: 1em;
+}
+
+.tips ul {
+    list-style-type: disc;
+    margin: 20px 0 20px 20px;
+}
+
+.tips ul li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header .logo img {
+        width: 100px;
+    }
+
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    nav {
+        float: none;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .section h2 {
+        font-size: 2em;
+    }
 }
