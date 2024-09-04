@@ -3,11 +3,20 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, FileField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, Optional
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
 
-# Define forms
+
+app.config['UPLOAD_FOLDER'] = 'static/profile_pics' 
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  
+
+
+users = {}
+
+
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -26,12 +35,16 @@ class LoginForm(FlaskForm):
     forgot_password = SubmitField('Forgot Password?')
     submit = SubmitField('Login')
 
-# Dummy user store
-users = {}
+
+def save_profile_picture(form_picture):
+    picture_filename = secure_filename(form_picture.filename)
+    picture_path = os.path.join(app.config['UPLOAD_FOLDER'], picture_filename)
+    form_picture.save(picture_path)
+    return picture_filename
 
 @app.route('/')
 def home():
-    return render_template('templates/login.html')
+    return render_template('home.html')  
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -64,11 +77,16 @@ def register():
         elif not terms:
             flash('You must agree to the terms and conditions', 'danger')
         else:
+            if profile_picture:
+                picture_filename = save_profile_picture(profile_picture)
+            else:
+                picture_filename = None
+
             users[email] = {
                 'username': username,
                 'phone': phone,
                 'password': password,
-                'profile_picture': profile_picture,
+                'profile_picture': picture_filename,
                 'bio': bio
             }
             flash('Registration successful! You can now log in', 'success')
@@ -76,4 +94,8 @@ def register():
     return render_template('register.html', form=form)
 
 if __name__ == '__main__':
+    # Ensure the upload folder exists
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
+    
     app.run(debug=True)
