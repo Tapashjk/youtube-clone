@@ -93,6 +93,27 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
+@app.route(('/logout'))
+@app.route('/logout')
+@app.route(('/logout'))
+@app.route('/logout')
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    flash('You have been logged out', 'success')
+    return redirect(url_for('login'))
+
+@app.route('/account', methods=['GET', 'POST'])
+def account():
+    form = UpdateAccountForm()
+if form.validate_on_submit():
+    username = form.username.data
+    email = form.email.data
+    phone = form.phone.data
+    profile_picture = form.profile_picture.data
+    bio = form.bio.data
+    
+
 if __name__ == '__main__':
     # Ensure the upload folder exists
     if not os.path.exists(app.config['UPLOAD_FOLDER']):
